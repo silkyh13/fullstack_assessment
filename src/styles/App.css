@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Luckiest Guy", serif;
+  line-height: 1.7em;
+  position: relative;
+  min-height: 100%;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.homepage {
+  position: relative;
+  min-height: 100%;
+}
