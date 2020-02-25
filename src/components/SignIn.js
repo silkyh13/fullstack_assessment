@@ -44,7 +44,7 @@ export default class SignIn extends Component {
   render() {
     return (
       <div id="sign-in">
-        {this.props.user ? (window.location = "/portfolio") : null}
+        {this.props.userName ? (window.location = "/portfolio") : null}
         <div className="form-container">
           <div className="form-wrap">
             <h1>Sign In</h1>

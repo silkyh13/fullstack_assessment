@@ -6,7 +6,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className="headers">
-          {this.props.userName ? (
+          {this.props.user ? (
             <h1 className="header">
               WELCOME <span className="larger">{this.props.userName}</span>
             </h1>

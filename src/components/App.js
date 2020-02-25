@@ -12,8 +12,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
-      userName: ""
+      user: "",
+      userName: null,
+      loggedOut: false
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -40,8 +41,7 @@ class App extends Component {
       .then(response => {
         // handle success
         this.setState({
-          user: null,
-          userName: ""
+          loggedOut: !this.state.loggedOut
         });
         console.log(response);
       })
@@ -75,7 +75,7 @@ class App extends Component {
                     <Link to="/portfolio">Portfolio</Link>
                   </li>
                   <li>
-                    <Link onClick={this.loggedOut} to="/signin">
+                    <Link onClick={this.loggedOut} to="/signup">
                       Log Out
                     </Link>
                   </li>
@@ -91,17 +91,14 @@ class App extends Component {
           </nav>
 
           <Switch>
-            <Route path="/signin">
-              <SignIn user={this.state.user} getUser={this.getUser} />
-            </Route>
             <Route path="/transactions">
               <Transactions />
             </Route>
             <Route path="/portfolio">
-              <Portfolio
-                user={this.state.user}
-                userName={this.state.userName}
-              />
+              <Portfolio userName={this.state.userName} />
+            </Route>
+            <Route path="/signin">
+              <SignIn userName={this.state.userName} getUser={this.getUser} />
             </Route>
             <Route path="/signup">
               <SignUp />
