@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/App.css";
+import Home from "./Home";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Portfolio from "./Portfolio";
@@ -39,7 +40,8 @@ class App extends Component {
       .then(response => {
         // handle success
         this.setState({
-          loggedOut: !this.state.loggedOut
+          user: null,
+          userName: ""
         });
         console.log(response);
       })
@@ -64,7 +66,6 @@ class App extends Component {
               {this.state.loggedOut
                 ? (window.location.pathname = "/signin")
                 : null}
-
               {this.state.user ? (
                 <ul>
                   <li>
@@ -74,7 +75,7 @@ class App extends Component {
                     <Link to="/portfolio">Portfolio</Link>
                   </li>
                   <li>
-                    <Link onClick={this.loggedOut} to="/">
+                    <Link onClick={this.loggedOut} to="/signin">
                       Log Out
                     </Link>
                   </li>
@@ -90,17 +91,23 @@ class App extends Component {
           </nav>
 
           <Switch>
+            <Route path="/signin">
+              <SignIn user={this.state.user} getUser={this.getUser} />
+            </Route>
             <Route path="/transactions">
               <Transactions />
             </Route>
-            <Route user={this.state.user} path="/portfolio">
-              <Portfolio />
+            <Route path="/portfolio">
+              <Portfolio
+                user={this.state.user}
+                userName={this.state.userName}
+              />
             </Route>
             <Route path="/signup">
               <SignUp />
             </Route>
             <Route path="/">
-              <SignIn user={this.state.user} getUser={this.getUser} />
+              <Home user={this.state.user} userName={this.state.userName} />
             </Route>
           </Switch>
         </div>
