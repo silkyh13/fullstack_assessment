@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 //route
 const User = require("./routes/user");
+const passport = require("./passport");
 
 const options = {
   host: process.env.DB_HOST,
