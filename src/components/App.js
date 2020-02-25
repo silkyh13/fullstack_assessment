@@ -7,25 +7,43 @@ import Portfolio from "./Portfolio";
 import Transactions from "./Transactions";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: ""
+    };
+  }
   render() {
     return (
       <Router>
-        <div className="homepage">
-          <div id="navbar">
+        <div id="homepage">
+          <nav className="navbar">
             <div className="container">
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/transactions">Transactions</Link>
-                </li>
-                <li>
-                  <Link to="/portfolio">Portfolio</Link>
-                </li>
-              </ul>
+              <h1 className="logo">
+                <Link to="/">Coinbase</Link>
+              </h1>
+              {this.state.user ? (
+                <ul>
+                  <li>
+                    <Link to="/transactions">Transactions</Link>
+                  </li>
+                  <li>
+                    <Link to="/portfolio">Portfolio</Link>
+                  </li>
+                  <li>
+                    <Link to="/signup">Sign Up</Link>
+                  </li>
+                </ul>
+              ) : (
+                <ul>
+                  <li>
+                    <Link to="/signup">Sign Up</Link>
+                  </li>
+                </ul>
+              )}
             </div>
-          </div>
+          </nav>
+
           <Switch>
             <Route path="/transactions">
               <Transactions />
@@ -37,7 +55,7 @@ class App extends Component {
               <SignUp />
             </Route>
             <Route path="/">
-              <SignIn />
+              <SignIn user={this.state.user} />
             </Route>
           </Switch>
         </div>
