@@ -2,6 +2,11 @@ import React, { Component } from "react";
 
 export default class Portfolio extends Component {
   render() {
-    return <p>Portfolio</p>;
+    return (
+      <div>
+        Hi {this.props.user}
+        <div>Portfolio</div>
+      </div>
+    );
   }
 }

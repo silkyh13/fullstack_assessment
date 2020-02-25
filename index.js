@@ -30,7 +30,11 @@ app.use(
 );
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static("public"));
 app.use("/api", User);
-
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

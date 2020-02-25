@@ -1,4 +1,4 @@
-const User = require("../database/index.js").User;
+const User = require("../database/index").User;
 const bcrypt = require("bcrypt");
 
 const registerUser = (firstName, lastName, email, password, cb) => {
@@ -13,12 +13,12 @@ const registerUser = (firstName, lastName, email, password, cb) => {
     })
     .catch(err => cb(err));
 };
-
 const validatePassword = (plainTextPassword, hash, cb) => {
   bcrypt
     .compare(plainTextPassword, hash)
     .then(res => {
       cb(null, res);
+      console.log(res, "validated mann");
     })
     .catch(err => cb(err));
 };

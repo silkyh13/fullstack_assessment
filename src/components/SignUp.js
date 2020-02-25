@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../styles/SignUp.css";
 export default class SignUp extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class SignUp extends Component {
       lastName: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      confirmEmail: false
     };
   }
 
@@ -17,7 +19,34 @@ export default class SignUp extends Component {
       [event.target.id]: event.target.value
     });
   };
+  submitForm = e => {
+    if (this.state.password === this.state.confirmPassword) {
+      e.preventDefault();
 
+      axios
+        .post("/api/user", {
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          email: this.state.email,
+          password: this.state.password
+        })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.setState({
+            confirmEmail: this.state.email
+          });
+        });
+    } else {
+      document
+        .getElementById("confirmPassword")
+        .setCustomValidity("Passwords don't match");
+    }
+  };
   render() {
     return (
       <div id="sign-up">
@@ -69,7 +98,11 @@ export default class SignUp extends Component {
                   onChange={this.handleRegister}
                 ></input>
               </div>
-              <button>Sign Up</button>
+              {this.state.confirmEmail === this.state.email ? (
+                (window.location.pathname = "/signin")
+              ) : (
+                <button onClick={this.submitForm}>Sign Up</button>
+              )}
             </form>
           </div>
         </div>
