@@ -1,0 +1,52 @@
+.header {
+  margin: 20px;
+  color: #00a07b;
+}
+
+.app {
+  display: flex;
+  flex-flow: row;
+}
+.category {
+  width: 20%;
+  margin: 20px;
+}
+.category-form {
+  margin-top: 2px;
+  display: flex;
+  flex-flow: column;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+input:focus {
+  border-bottom: 2px solid #00a07b;
+}
+
+button {
+  float: right;
+  padding: 8px 12px;
+  margin: 20px 0px 20px 0px;
+  border: 2px solid #00a07b;
+  background: 0;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #00a07b;
+  color: #fff;
+  border: 2px solid #00a07b;
+}

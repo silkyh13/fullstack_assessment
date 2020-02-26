@@ -34,12 +34,34 @@ const User = sequelize.define("user", {
   password: {
     type: Sequelize.TEXT,
     allowNull: false
+  },
+  balance: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 });
 
+const Transaction = sequelize.define("transaction", {
+  ticker: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  cost: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
+});
+
+User.hasMany(Transaction);
+Transaction.belongsTo(User);
 sequelize.sync();
 
 module.exports = {
   User,
+  Transaction,
   Sequelize
 };

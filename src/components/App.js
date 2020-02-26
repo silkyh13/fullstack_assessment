@@ -63,9 +63,6 @@ class App extends Component {
               <h1 className="logo">
                 <Link to="/">Coinbase</Link>
               </h1>
-              {this.state.loggedOut
-                ? (window.location.pathname = "/signin")
-                : null}
               {this.state.user ? (
                 <ul>
                   <li>
@@ -88,6 +85,9 @@ class App extends Component {
                 </ul>
               )}
             </div>
+            {this.state.loggedOut
+              ? (window.location.pathname = "/signin")
+              : null}
           </nav>
 
           <Switch>
