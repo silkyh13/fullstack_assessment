@@ -59,7 +59,7 @@ export default class Portfolio extends Component {
       .get("/api/user")
       .then(res => {
         this.setState({
-          balance: res.data.balance
+          balance: (res.data.balance / 1000).toFixed(2)
         });
       })
       .catch(err => console.error(err));

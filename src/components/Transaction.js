@@ -37,12 +37,16 @@ export default class Transaction extends Component {
             </div>
 
             {this.state.transactions.map((transaction, index) => {
+              console.log(transaction, "cost meow");
               return (
                 <div className="txn-row">
                   <div className="txn-data">BUY ({transaction.ticker})</div>
                   <div className="txn-data">{transaction.quantity} shares</div>
                   <div className="txn-data">
-                    ${transaction.cost * transaction.quantity}
+                    $
+                    {((transaction.cost / 1000) * transaction.quantity).toFixed(
+                      2
+                    )}
                   </div>
                 </div>
               );

@@ -5,7 +5,13 @@ const registerUser = (firstName, lastName, email, password, cb) => {
   bcrypt
     .hash(password, 10)
     .then(hash => {
-      User.create({ firstName, lastName, email, password: hash, balance: 5000 })
+      User.create({
+        firstName,
+        lastName,
+        email,
+        password: hash,
+        balance: 5000000
+      })
         .then(user => {
           cb(null, user);
         })

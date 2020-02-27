@@ -22,17 +22,21 @@ const buy = (ticker, quantity, user, cb) => {
             //there is enough money in balance to create transaction
             Transaction.create({
               ticker: stock[stockKeys[0]],
-              cost: stock[stockKeys[4]],
+              cost: stock[stockKeys[4]] * 1000,
               quantity,
               userId: user.id
             })
               .then(transaction => {
                 //if transaction was successfully created, set new balance where id = user.id
+
                 cb(null, transaction);
                 User.update(
                   {
                     balance:
-                      user.balance - transaction.cost * transaction.quantity
+                      ((user.balance / 1000).toFixed(2) -
+                        (transaction.cost / 1000).toFixed(2) *
+                          transaction.quantity) *
+                      1000
                   },
                   {
                     where: {

@@ -47,7 +47,7 @@ const Transaction = sequelize.define("transaction", {
     allowNull: false
   },
   cost: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL,
     allowNull: false
   },
   quantity: {
