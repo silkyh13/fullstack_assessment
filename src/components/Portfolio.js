@@ -45,6 +45,7 @@ export default class Portfolio extends Component {
             error: false
           });
         }
+        this.getUserBalance();
       })
       .catch(err => {
         this.setState({
@@ -55,6 +56,9 @@ export default class Portfolio extends Component {
   };
   //get account balance
   componentDidMount() {
+    this.getUserBalance();
+  }
+  getUserBalance = () => {
     axios
       .get("/api/user")
       .then(res => {
@@ -63,7 +67,7 @@ export default class Portfolio extends Component {
         });
       })
       .catch(err => console.error(err));
-  }
+  };
   render() {
     return (
       <div id="portfolio-container">
