@@ -25,7 +25,7 @@ export default class Transaction extends Component {
   }
   render() {
     return (
-      <div>
+      <div id="transaction-container">
         <h1 className="header">Transactions</h1>
 
         <div className="txn">

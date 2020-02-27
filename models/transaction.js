@@ -15,9 +15,11 @@ const buy = (ticker, quantity, user, cb) => {
         if (res.data["Global Quote"]) {
           const stock = res.data["Global Quote"];
           const stockKeys = Object.keys(stock);
+          //if there is not enough to purchase stocks in user balance
           if (user.balance < stock[stockKeys[4]] * quantity) {
             cb(null, "Not enough money in account");
           } else {
+            //there is enough money in balance to create transaction
             Transaction.create({
               ticker: stock[stockKeys[0]],
               cost: stock[stockKeys[4]],
@@ -25,7 +27,7 @@ const buy = (ticker, quantity, user, cb) => {
               userId: user.id
             })
               .then(transaction => {
-                //if transaction was successfully created
+                //if transaction was successfully created, set new balance where id = user.id
                 cb(null, transaction);
                 User.update(
                   {
@@ -59,7 +61,7 @@ const get = (userId, cb) => {
     }
   })
     .then(transactions => {
-      cb(null, transactions);
+      cb(null, transactions.reverse());
     })
     .catch(err => {
       cb(err);

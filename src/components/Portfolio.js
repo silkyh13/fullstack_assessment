@@ -66,7 +66,7 @@ export default class Portfolio extends Component {
   }
   render() {
     return (
-      <div>
+      <div id="portfolio-container">
         {this.props.userName ? (
           <h1 className="header">
             Portfolio <span className="larger">($fake cash)</span>

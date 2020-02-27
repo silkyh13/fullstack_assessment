@@ -1,3 +1,8 @@
+#transaction-container {
+  max-width: 60vw;
+  margin: 3vh auto;
+  min-width: 50vh;
+}
 .header {
   margin: 20px;
   color: #00a07b;
