@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 //route
 const User = require("./routes/user");
+const Transaction = require("./routes/transaction");
 const passport = require("./passport");
 
 const options = {
@@ -34,6 +35,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static("public"));
 app.use("/api", User);
+app.use("/api", Transaction);
+
 app.get("*", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });

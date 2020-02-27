@@ -72,7 +72,7 @@ class App extends Component {
                     <Link to="/portfolio">Portfolio</Link>
                   </li>
                   <li>
-                    <Link onClick={this.loggedOut} to="/signup">
+                    <Link onClick={this.loggedOut} to="/">
                       Log Out
                     </Link>
                   </li>

@@ -1,48 +1,52 @@
 require("dotenv").config();
 const Transaction = require("../database/index").Transaction;
+const User = require("../database/index").User;
 const axios = require("axios");
-
-const buy = (ticker, qty, cb) => {
-  let total = 0;
-  let pps;
+//buy function for ticker
+const buy = (ticker, quantity, user, cb) => {
   axios
     .get(
       `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${process.env.API_KEY}`
     )
     .then(res => {
       if (res.data["Global Quote"]) {
-        pps = parseInt(res.data["Global Quote"]["05. price"]);
-        total = qty * pps;
+        const stock = res.data["Global Quote"];
+        const stockKeys = Object.keys(stock);
+        Transaction.create({
+          ticker: stock[stockKeys[0]],
+          cost: stock[stockKeys[4]],
+          quantity,
+          userId: user.id
+        })
+          .then(transaction => {
+            //if transaction was successfully created
+            cb(null, transaction);
+          })
+          .catch(err => {
+            cb(err);
+          });
       } else {
-        cb(undefined);
+        //if ticker does not exist
+        cb("Ticker does not exist.");
       }
     });
-
-  //get user by id
-  let balance;
-  axios
-    .get("/api/user")
-    .then(res => {
-      balance = res.data.balance;
-    })
-    .catch(err => console.error(err));
-  //check balance
-  if (balance >= total) {
-    //make the purchase ticker,cost,quantity
-    Transaction.create({
-      ticker: ticker,
-      cost: pps,
-      quantity: qty
-    })
-      .then(res => {
-        cb(null, res);
-      })
-      .catch(err => {
-        cb(err);
-      });
-  } //return error
 };
-
+//get all transactions for the userId where userId is userId
+//select * from transactions where userId={userId}
+const get = (userId, cb) => {
+  const transactions = Transaction.findAll({
+    where: {
+      userId
+    }
+  })
+    .then(transactions => {
+      cb(null, transactions);
+    })
+    .catch(err => {
+      cb(err);
+    });
+};
 module.exports = {
-  buy
+  buy,
+  get
 };
