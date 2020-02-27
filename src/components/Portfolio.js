@@ -9,7 +9,8 @@ export default class Portfolio extends Component {
     this.state = {
       ticker: "",
       quantity: 0,
-      balance: 0
+      balance: 0,
+      error: false
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -28,9 +29,21 @@ export default class Portfolio extends Component {
         quantity: this.state.quantity
       })
       .then(transaction => {
-        console.log("success", transaction);
+        console.log("success", transaction.data);
+        if (transaction.data === "Ticker does not exist.") {
+          this.setState({
+            error: true
+          });
+        } else {
+          this.setState({
+            error: false
+          });
+        }
       })
       .catch(err => {
+        this.setState({
+          error: true
+        });
         console.log(err);
       });
   };
@@ -58,7 +71,8 @@ export default class Portfolio extends Component {
           <PortfolioList />
 
           <div className="category">
-            <h3 className="cash">Cash - ${this.state.balance}</h3>
+            <h2 className="cash">Cash - ${this.state.balance}</h2>
+            {this.state.error ? <h3>Enter a valid ticker or amount</h3> : null}
             <form className="category-form">
               <div className="form-group">
                 <input

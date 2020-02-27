@@ -39,7 +39,7 @@ export default class Transaction extends Component {
             {this.state.transactions.map((transaction, index) => {
               return (
                 <div className="txn-row">
-                  <div className="txn-data">{transaction.ticker}</div>
+                  <div className="txn-data">BUY ({transaction.ticker})</div>
                   <div className="txn-data">{transaction.quantity} shares</div>
                   <div className="txn-data">
                     ${transaction.cost * transaction.quantity}
