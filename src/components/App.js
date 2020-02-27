@@ -6,7 +6,7 @@ import Home from "./Home";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Portfolio from "./Portfolio";
-import Transactions from "./Transactions";
+import Transactions from "./Transaction";
 
 class App extends Component {
   constructor(props) {

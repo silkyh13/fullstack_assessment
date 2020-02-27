@@ -11,6 +11,7 @@ export default class Portfolio extends Component {
       quantity: 0,
       balance: 0
     };
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   //handle input: ticker's name and quantity
   handleTransaction = e => {

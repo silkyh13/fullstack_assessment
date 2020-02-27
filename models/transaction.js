@@ -21,6 +21,16 @@ const buy = (ticker, quantity, user, cb) => {
           .then(transaction => {
             //if transaction was successfully created
             cb(null, transaction);
+            User.update(
+              {
+                balance: user.balance - transaction.cost * transaction.quantity
+              },
+              {
+                where: {
+                  id: user.id
+                }
+              }
+            ).catch(err => cb(err));
           })
           .catch(err => {
             cb(err);
