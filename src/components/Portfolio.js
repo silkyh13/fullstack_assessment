@@ -11,7 +11,8 @@ export default class Portfolio extends Component {
       quantity: 0,
       balance: 0,
       error: false,
-      noMoney: false
+      noMoney: false,
+      list: []
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
@@ -30,7 +31,9 @@ export default class Portfolio extends Component {
         quantity: this.state.quantity
       })
       .then(transaction => {
-        console.log("success", transaction.data);
+        document.getElementById("ticker").value = "";
+        document.getElementById("quantity").value = "";
+        this.getPortfolioList();
         if (transaction.data === "Ticker does not exist.") {
           this.setState({
             error: true
@@ -54,16 +57,30 @@ export default class Portfolio extends Component {
         console.log(err);
       });
   };
-  //get account balance
   componentDidMount() {
     this.getUserBalance();
+    this.getPortfolioList();
   }
+
+  //get account balance
   getUserBalance = () => {
     axios
       .get("/api/user")
       .then(res => {
         this.setState({
           balance: (res.data.balance / 1000).toFixed(2)
+        });
+      })
+      .catch(err => console.error(err));
+  };
+  //get compiled list of stock and prices
+  getPortfolioList = () => {
+    console.log("made it here");
+    axios
+      .get("/api/portfolio")
+      .then(res => {
+        this.setState({
+          list: res.data
         });
       })
       .catch(err => console.error(err));
@@ -78,7 +95,10 @@ export default class Portfolio extends Component {
         ) : null}
 
         <div className="app">
-          <PortfolioList />
+          <PortfolioList
+            list={this.state.list}
+            getPortfolioList={this.getPortfolioList}
+          />
 
           <div className="category">
             <h2 className="cash">Cash - ${this.state.balance}</h2>

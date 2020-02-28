@@ -1,24 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDom from "react-dom";
 import "../styles/Portfolio.css";
+import axios from "axios";
 
-var PortfolioList = props => {
-  return (
-    <div className="txn">
-      <div className="txn-table">
-        <div className="txn-header txn-row">
-          <div className="txn-data">Ticker</div>
-          <div className="txn-data">Shares</div>
-          <div className="txn-data">Total Price</div>
-        </div>
+export default class PortfolioList extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-        <div className="txn-row">
-          <div className="txn-data">fb</div>
-          <div className="txn-data">5 shares</div>
-          <div className="txn-data">$20045.09</div>
+  render() {
+    return (
+      <div className="txn">
+        <div className="txn-table">
+          <div className="txn-header txn-row">
+            <div className="txn-data">Ticker</div>
+            <div className="txn-data">Shares</div>
+            <div className="txn-data">Total Price</div>
+          </div>
+          {this.props.list.map((stock, index) => {
+            return (
+              <div className="txn-row" key={index}>
+                <div className="txn-data">{stock.ticker}</div>
+                <div className="txn-data">{stock.quantity} shares</div>
+                <div className="txn-data">
+                  ${(stock.quantity * stock.price).toFixed(2)}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
-  );
-};
-export default PortfolioList;
+    );
+  }
+}
