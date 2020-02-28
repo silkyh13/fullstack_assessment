@@ -75,7 +75,6 @@ export default class Portfolio extends Component {
   };
   //get compiled list of stock and prices
   getPortfolioList = () => {
-    console.log("made it here");
     axios
       .get("/api/portfolio")
       .then(res => {

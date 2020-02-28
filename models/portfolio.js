@@ -2,8 +2,7 @@ require("dotenv").config();
 const User = require("../database/index").User;
 const Transaction = require("../database/index").Transaction;
 const axios = require("axios");
-
-// https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${process.env.API_KEY}
+const fetch = require("node-fetch");
 
 //compile the newest stock prices
 const get = (userId, cb) => {
@@ -14,10 +13,6 @@ const get = (userId, cb) => {
     }
   }).then(transactions => {
     //categorize by ticker and quantity
-    /*ex: tickerObject = {
-      fb: 4,
-      uber: 2
-    }*/
     const tickerObject = transactions.reduce((tickers, transaction) => {
       tickers[transaction.ticker]
         ? (tickers[transaction.ticker] += transaction.quantity)
@@ -27,31 +22,42 @@ const get = (userId, cb) => {
     const tickerArray = Object.keys(tickerObject);
 
     //returns object with ticker's information
-    const prices = async () => {
-      return await axios.all(
-        tickerArray.map(ticker => {
-          return axios.get(
-            `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${process.env.API_KEY}`
-          );
-        })
+    const requests = tickerArray.map(ticker => {
+      return fetch(
+        `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${ticker}&types=quote&filter=symbol,latestPrice&displayPercent=true&token=${process.env.CLOUD_API_KEY}`
       );
-    };
-
-    prices()
+    });
+    Promise.all(requests)
       .then(prices => {
-        //map through response and return new obj of ticker, current price, and quantity for each ticker
-        const currentPrices = prices.map((price, index) => {
-          const stock = price.data["Global Quote"];
-          const stockKeys = Object.keys(stock);
-          return {
-            ticker: tickerArray[index],
-            price: stock[stockKeys[4]],
-            quantity: tickerObject[tickerArray[index]]
-          };
+        Promise.all(prices.map(price => price.json())).then(prices => {
+          const stockKey = Object.keys(prices);
+          //stockKey = [ '0', '1', '2', '3', '4' ]
+          let formatted = stockKey.map(index => {
+            //ticker symbol
+            let ticker = Object.keys(prices[stockKey[index]]);
+            let stock = prices[stockKey[index]][ticker].quote;
+            stock.quantity = tickerObject[tickerArray[index]];
+            return stock;
+          });
+
+          cb(null, formatted);
         });
-        cb(null, currentPrices);
+        // const currentPrices = prices.map((price, index) => {
+        //   const stock = price.data["Global Quote"];
+        //   const stockKeys = Object.keys(stock);
+        //   return {
+        //     ticker: tickerArray[index],
+        //     price: stock[stockKeys[4]],
+        //     quantity: tickerObject[tickerArray[index]],
+        //     open: stock[stockKeys[1]]
+        //   };
+        // });
+
+        // cb(null, currentPrices);
       })
       .catch(err => cb(err));
+
+    //map through response and return new obj of ticker, current price, and quantity for each ticker
   });
 };
 
