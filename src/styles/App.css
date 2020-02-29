@@ -11,7 +11,7 @@ body {
   line-height: 1.7em;
 }
 a {
-  color: black;
+  color: #00a07b;
   text-decoration: none;
 }
 
@@ -19,7 +19,7 @@ p {
   margin: 10px 0;
 }
 
-#homepage {
+#app {
   position: relative;
   min-height: 100%;
 }
@@ -33,16 +33,16 @@ p {
 
 .navbar {
   background: #1028;
-  color: #221a00;
   overflow: auto;
 }
-.navbar a {
-  color: #221a00;
-}
 
-.navbar h1 {
+.navbar .logo a {
   float: left;
   padding-top: 20px;
+  color: #00a07b;
+  text-transform: uppercase;
+  text-shadow: 1px 1px #fbfbfb;
+  letter-spacing: 3px;
 }
 
 .navbar ul {
@@ -56,9 +56,14 @@ p {
 }
 
 .navbar ul li a {
+  text-transform: uppercase;
   display: block;
   padding: 20px;
   text-align: center;
+  color: #00a07b;
+  background: #fbfbfb;
+  font-weight: 700;
+  letter-spacing: 4px;
 }
 
 .navbar ul li a:hover,

@@ -95,7 +95,7 @@ input:focus {
   border-bottom: 2px solid #00a07b;
 }
 
-button {
+.btn {
   float: right;
   padding: 8px 12px;
   margin: 20px 0px 20px 0px;
@@ -106,7 +106,7 @@ button {
   transition: all 0.3s;
 }
 
-button:hover {
+.btn:hover {
   background: #00a07b;
   color: #fff;
   border: 2px solid #00a07b;
