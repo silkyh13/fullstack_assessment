@@ -7,6 +7,7 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Portfolio from "./Portfolio";
 import Transactions from "./Transaction";
+import Goodbye from "./Goodbye";
 
 class App extends Component {
   constructor(props) {
@@ -54,10 +55,11 @@ class App extends Component {
         console.log("logged out");
       });
   };
+
   render() {
     return (
       <Router>
-        <div id="homepage">
+        <div id="app">
           <nav className="navbar">
             <div className="container">
               <h1 className="logo">
@@ -68,11 +70,11 @@ class App extends Component {
                   <li>
                     <Link to="/transactions">Transactions</Link>
                   </li>
-                  <li>
+                  <li className="even">
                     <Link to="/portfolio">Portfolio</Link>
                   </li>
                   <li>
-                    <Link onClick={this.loggedOut} to="/">
+                    <Link onClick={this.loggedOut} to="/goodbye">
                       Log Out
                     </Link>
                   </li>
@@ -80,17 +82,20 @@ class App extends Component {
               ) : (
                 <ul>
                   <li>
-                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/signin">Sign In</Link>
                   </li>
                 </ul>
               )}
             </div>
             {this.state.loggedOut
-              ? (window.location.pathname = "/signin")
+              ? (window.location.pathname = "/goodbye")
               : null}
           </nav>
 
           <Switch>
+            <Route path="/goodbye">
+              <Goodbye />
+            </Route>
             <Route path="/transactions">
               <Transactions />
             </Route>

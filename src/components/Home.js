@@ -2,24 +2,32 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 export default class Home extends Component {
+  reload = () => {
+    location.reload();
+  };
   render() {
     return (
       <div id="homepage">
-        <div id="left"></div>
-        <div id="right"></div>
+        <div id="left">
+          <div id="left_s"></div>
+        </div>
+        <div id="right">
+          <div id="right_s"></div>
+        </div>
         <div id="img">
           <img src="http://localhost:3000/img/v.png"></img>
         </div>
-        <div id="content">
+        <div className="content">
           <h1>
-            Finance <br /> is important
+            Finance <br /> <span className="custom-br">is</span>
+            <br /> important
           </h1>
           <p>Lorem ipsum dolor sit.</p>
           <button>
             {this.props.user ? (
-              <h1>
+              <h2>
                 WELCOME <span>{this.props.userName}</span>
-              </h1>
+              </h2>
             ) : (
               <h2>
                 <Link className="name-of-user" to="/signin">
@@ -42,16 +50,6 @@ export default class Home extends Component {
             </li>
             <li>
               <i className="fab fa-linkedin"></i>
-            </li>
-          </ul>
-        </div>
-        <div className="navigator">
-          <ul>
-            <li>
-              <i className="fas fa-arrow-left"></i>
-            </li>
-            <li>
-              <i className="fas fa-arrow-right"></i>
             </li>
           </ul>
         </div>

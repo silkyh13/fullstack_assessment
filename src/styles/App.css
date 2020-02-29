@@ -60,10 +60,13 @@ p {
   display: block;
   padding: 20px;
   text-align: center;
-  color: #00a07b;
-  background: #fbfbfb;
+  color: white;
   font-weight: 700;
   letter-spacing: 4px;
+}
+
+.navbar ul li.even {
+  background-color: #1028;
 }
 
 .navbar ul li a:hover,
