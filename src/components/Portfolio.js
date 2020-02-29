@@ -12,10 +12,16 @@ export default class Portfolio extends Component {
       balance: 0,
       error: false,
       noMoney: false,
-      list: []
+      list: [],
+      fakeCash: 0
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
+  cashMeOutside = fakeCash => {
+    this.setState({
+      fakeCash
+    });
+  };
   //handle input: ticker's name and quantity
   handleTransaction = e => {
     this.setState({
@@ -89,12 +95,13 @@ export default class Portfolio extends Component {
       <div id="portfolio-container">
         {this.props.userName ? (
           <h1 className="header">
-            Portfolio <span className="larger">($fake cash)</span>
+            Portfolio <span className="larger">{this.state.fakeCash}</span>
           </h1>
         ) : null}
 
         <div className="app">
           <PortfolioList
+            cashMeOutside={this.cashMeOutside}
             list={this.state.list}
             getPortfolioList={this.getPortfolioList}
           />

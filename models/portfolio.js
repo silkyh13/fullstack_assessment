@@ -29,35 +29,21 @@ const get = (userId, cb) => {
     });
     Promise.all(requests)
       .then(prices => {
-        Promise.all(prices.map(price => price.json())).then(prices => {
-          const stockKey = Object.keys(prices);
+        Promise.all(prices.map(price => price.json())).then(stocks => {
+          const stockKey = Object.keys(stocks);
           //stockKey = [ '0', '1', '2', '3', '4' ]
           let formatted = stockKey.map(index => {
             //ticker symbol
-            let ticker = Object.keys(prices[stockKey[index]]);
-            let stock = prices[stockKey[index]][ticker].quote;
+            let ticker = Object.keys(stocks[stockKey[index]]);
+            let stock = stocks[stockKey[index]][ticker].quote;
             stock.quantity = tickerObject[tickerArray[index]];
             return stock;
           });
 
           cb(null, formatted);
         });
-        // const currentPrices = prices.map((price, index) => {
-        //   const stock = price.data["Global Quote"];
-        //   const stockKeys = Object.keys(stock);
-        //   return {
-        //     ticker: tickerArray[index],
-        //     price: stock[stockKeys[4]],
-        //     quantity: tickerObject[tickerArray[index]],
-        //     open: stock[stockKeys[1]]
-        //   };
-        // });
-
-        // cb(null, currentPrices);
       })
       .catch(err => cb(err));
-
-    //map through response and return new obj of ticker, current price, and quantity for each ticker
   });
 };
 
