@@ -17,11 +17,6 @@ export default class Portfolio extends Component {
     };
     this.componentDidMount = this.componentDidMount.bind(this);
   }
-  cashMeOutside = fakeCash => {
-    this.setState({
-      fakeCash
-    });
-  };
   //handle input: ticker's name and quantity
   handleTransaction = e => {
     this.setState({
@@ -80,12 +75,20 @@ export default class Portfolio extends Component {
       .catch(err => console.error(err));
   };
   //get compiled list of stock and prices
+
   getPortfolioList = () => {
     axios
       .get("/api/portfolio")
       .then(res => {
+        const total = res.data
+          .reduce((total, item) => {
+            total += parseFloat((item.latestPrice * item.quantity).toFixed(2));
+            return total;
+          }, 0)
+          .toFixed(2);
         this.setState({
-          list: res.data
+          list: res.data,
+          fakeCash: total
         });
       })
       .catch(err => console.error(err));
@@ -101,7 +104,6 @@ export default class Portfolio extends Component {
 
         <div className="app">
           <PortfolioList
-            cashMeOutside={this.cashMeOutside}
             list={this.state.list}
             getPortfolioList={this.getPortfolioList}
           />
