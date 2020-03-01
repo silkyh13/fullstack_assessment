@@ -16,7 +16,7 @@ const buy = (ticker, quantity, user, cb) => {
           const stock = res.data["Global Quote"];
           const stockKeys = Object.keys(stock);
           //if there is not enough to purchase stocks in user balance
-          if (user.balance < stock[stockKeys[4]] * quantity) {
+          if (user.balance / 1000 < stock[stockKeys[4]] * quantity) {
             cb(null, "Not enough money in account");
           } else {
             //there is enough money in balance to create transaction

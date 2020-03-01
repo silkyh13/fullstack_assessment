@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 export default class Home extends Component {
-  reload = () => {
-    location.reload();
-  };
+  // componentDidMount() {
+  //   this.
+  //   location.reload();
+  // }
   render() {
     return (
       <div id="homepage">
@@ -26,7 +27,9 @@ export default class Home extends Component {
           <button>
             {this.props.user ? (
               <h2>
-                WELCOME <span>{this.props.userName}</span>
+                <Link className="name-of-user" to="/portfolio">
+                  WELCOME <span>{this.props.userName}</span>
+                </Link>
               </h2>
             ) : (
               <h2>
