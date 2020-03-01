@@ -43,16 +43,40 @@ export default class Home extends Component {
         <div className="media">
           <ul>
             <li>
-              <i className="fab fa-facebook-square"></i>
+              <a
+                href="https://www.facebook.com/Spotify"
+                target="_blank"
+                title="Share on Facebook"
+              >
+                <i className="fab fa-facebook-square"></i>
+              </a>
             </li>
             <li>
-              <i className="fab fa-twitter-square"></i>
+              <a
+                href="https://twitter.com/Spotify"
+                target="_blank"
+                title="Share on Twitter"
+              >
+                <i className="fab fa-twitter-square"></i>
+              </a>
             </li>
             <li>
-              <i className="fab fa-instagram"></i>
+              <a
+                href="https://github.com/silkyh13"
+                target="_blank"
+                title="Share on Github"
+              >
+                <i class="fab fa-github-square"></i>
+              </a>
             </li>
             <li>
-              <i className="fab fa-linkedin"></i>
+              <a
+                href="https://www.linkedin.com/in/silin-dang"
+                target="_blank"
+                title="Share on LinkedIn"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
             </li>
           </ul>
         </div>

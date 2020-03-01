@@ -110,7 +110,7 @@ export default class Portfolio extends Component {
           />
 
           <div className="category">
-            <h2 className="cash">Cash - ${this.state.balance}</h2>
+            <h2 className="cash">Cash: ${this.state.balance}</h2>
             {this.state.error ? (
               <h3>Enter a valid ticker or amount</h3>
             ) : this.state.noMoney ? (
