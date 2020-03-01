@@ -1,0 +1,41 @@
+@media only screen and (max-width: 760px) {
+  .navbar .logo {
+    float: none;
+    text-align: center;
+    padding: 1.5vh;
+  }
+  .navbar ul,
+  .navbar ul li {
+    float: none;
+  }
+  .navbar ul li a {
+    padding: 0.5vh;
+    border-top: #444 dotted 1px;
+  }
+  #left {
+    height: 91vh;
+    background: #c1c1c1;
+  }
+  #right {
+    height: 91vh;
+    background: #d8656f;
+    bottom: 0;
+  }
+  #img {
+    width: 25vh;
+    height: auto;
+    right: 10%;
+  }
+  .content {
+    left: 12%;
+  }
+  .content h1 {
+    font-size: 4vh;
+  }
+  .media {
+    left: 15%;
+    width: 23vh;
+    height: 6vh;
+    bottom: 5vh;
+  }
+}

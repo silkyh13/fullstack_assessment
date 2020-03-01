@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
+import "../styles/Mobile.css";
 export default class Home extends Component {
   // componentDidMount() {
   //   this.

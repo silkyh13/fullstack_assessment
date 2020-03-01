@@ -36,7 +36,7 @@ p {
   overflow: auto;
 }
 
-.navbar .logo a {
+.navbar .logo {
   float: left;
   padding-top: 20px;
   color: #00a07b;
@@ -65,8 +65,10 @@ p {
   letter-spacing: 4px;
 }
 
-.navbar ul li.even {
-  background-color: #1028;
+@media (min-width: 761px) {
+  .navbar ul li.even {
+    background-color: #1028;
+  }
 }
 
 .navbar ul li a:hover,
