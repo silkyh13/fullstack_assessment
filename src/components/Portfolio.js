@@ -10,6 +10,7 @@ export default class Portfolio extends Component {
       ticker: "",
       quantity: 0,
       balance: 0,
+      open: 0,
       error: false,
       noMoney: false,
       list: [],
@@ -35,7 +36,7 @@ export default class Portfolio extends Component {
         document.getElementById("ticker").value = "";
         document.getElementById("quantity").value = "";
         this.getPortfolioList();
-        if (transaction.data === "Ticker does not exist.") {
+        if (transaction.data === "Not Valid") {
           this.setState({
             error: true
           });

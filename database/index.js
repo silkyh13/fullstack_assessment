@@ -53,6 +53,10 @@ const Transaction = sequelize.define("transaction", {
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  open: {
+    type: Sequelize.DECIMAL,
+    allowNull: false
   }
 });
 
