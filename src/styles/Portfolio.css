@@ -114,11 +114,11 @@ input:focus {
 }
 
 #green {
-  background: green;
+  color: green;
 }
 #red {
-  background: red;
+  color: red;
 }
 #grey {
-  background: grey;
+  color: grey;
 }

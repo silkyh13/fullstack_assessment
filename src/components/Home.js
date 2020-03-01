@@ -28,7 +28,7 @@ export default class Home extends Component {
             {this.props.user ? (
               <h2>
                 <Link className="name-of-user" to="/portfolio">
-                  WELCOME <span>{this.props.userName}</span>
+                  Portfolio
                 </Link>
               </h2>
             ) : (
