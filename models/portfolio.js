@@ -24,7 +24,7 @@ const get = (userId, cb) => {
     //returns object with ticker's information
     const requests = tickerArray.map(ticker => {
       return fetch(
-        `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${ticker}&types=quote&filter=symbol,latestPrice&displayPercent=true&token=${process.env.CLOUD_API_KEY}`
+        `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${ticker}&types=quote&filter=symbol,open,latestPrice&displayPercent=true&token=${process.env.CLOUD_API_KEY}`
       );
     });
     Promise.all(requests)

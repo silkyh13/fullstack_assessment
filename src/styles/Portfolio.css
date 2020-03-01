@@ -55,10 +55,11 @@
 }
 
 .txn-row:hover {
-  color: #00a07b;
+  color: #46bba0;
 }
 
 .txn-data {
+  /* font-weight: 700; */
   display: flex;
   flex-flow: row nowrap;
   flex-grow: 1;
@@ -110,4 +111,14 @@ input:focus {
   background: #00a07b;
   color: #fff;
   border: 2px solid #00a07b;
+}
+
+#green {
+  background: green;
+}
+#red {
+  background: red;
+}
+#grey {
+  background: grey;
 }

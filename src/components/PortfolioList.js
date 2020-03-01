@@ -22,7 +22,16 @@ export default class PortfolioList extends Component {
               <div className="txn-row" key={index}>
                 <div className="txn-data">{stock.symbol}</div>
                 <div className="txn-data">{stock.quantity} shares</div>
-                <div className="txn-data">
+                <div
+                  className="txn-data"
+                  id={
+                    stock.latestPrice > stock.open
+                      ? "green"
+                      : stock.latestPrice < stock.open
+                      ? "red"
+                      : "grey"
+                  }
+                >
                   ${(stock.quantity * stock.latestPrice).toFixed(2)}
                 </div>
               </div>
