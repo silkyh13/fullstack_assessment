@@ -63,7 +63,7 @@ class App extends Component {
           <nav className="navbar">
             <div className="container">
               <h1 className="logo" onClick="window.location.reload();">
-                <Link to="/">Coinbase</Link>
+                <Link to="/">FakeStock</Link>
               </h1>
               {this.state.user ? (
                 <ul>

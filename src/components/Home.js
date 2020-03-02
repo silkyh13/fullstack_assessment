@@ -49,7 +49,7 @@ export default class Home extends Component {
                 target="_blank"
                 title="Share on Facebook"
               >
-                <i className="fab fa-facebook-square"></i>
+                <i className="fab fa-facebook-square fa-2x"></i>
               </a>
             </li>
             <li>
@@ -58,7 +58,7 @@ export default class Home extends Component {
                 target="_blank"
                 title="Share on Twitter"
               >
-                <i className="fab fa-twitter-square"></i>
+                <i className="fab fa-twitter-square fa-2x"></i>
               </a>
             </li>
             <li>
@@ -67,7 +67,7 @@ export default class Home extends Component {
                 target="_blank"
                 title="Share on Github"
               >
-                <i class="fab fa-github-square"></i>
+                <i class="fab fa-github-square fa-2x"></i>
               </a>
             </li>
             <li>
@@ -76,7 +76,7 @@ export default class Home extends Component {
                 target="_blank"
                 title="Share on LinkedIn"
               >
-                <i className="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin fa-2x"></i>
               </a>
             </li>
           </ul>

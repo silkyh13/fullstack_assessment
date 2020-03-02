@@ -58,6 +58,7 @@ export default class SignIn extends Component {
                   type="email"
                   id="email"
                   onChange={this.handleSignIn}
+                  placeholder="demo@gmail.com"
                 ></input>
               </div>
 
@@ -66,6 +67,7 @@ export default class SignIn extends Component {
                 <input
                   type="password"
                   id="password"
+                  placeholder="demo"
                   onChange={this.handleSignIn}
                 ></input>
               </div>
@@ -81,6 +83,14 @@ export default class SignIn extends Component {
               Don't have an account? <Link to="/signup">Sign Up</Link>
             </p>
           </footer>
+        </div>
+        <div className="box3 sb14">
+          <div class="close-container">
+            <div class="leftright"></div>
+            <div class="rightleft"></div>
+            <label class="close">close</label>
+          </div>
+          Email: demo@gmail.com <br /> Password: demo
         </div>
       </div>
     );

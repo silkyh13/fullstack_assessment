@@ -41,14 +41,16 @@ a {
   letter-spacing: 3.4px;
   margin-top: 30px;
   margin-bottom: 20px;
-  background-color: #2bd9ad;
+  background-color: #6feaca;
   border-radius: 5px;
-  color: white;
+  color: #1028;
   cursor: pointer;
+  font-weight: 700;
 }
 
 #sign-in .form-container .form-wrap button:hover {
-  background-color: #24a383e3;
+  color: white;
+  background-color: #333;
 }
 
 .error-message {
@@ -62,4 +64,93 @@ footer {
 }
 footer a {
   color: blue;
+}
+
+.box3 {
+  width: 300px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: #6feaca;
+  color: #1028;
+  padding: 10px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  font-size: small;
+  position: relative;
+}
+
+/* speech bubble 14 */
+
+.sb14:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid #6feaca;
+  border-top: 15px solid #6feaca;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+}
+
+/* close button */
+.close-container {
+  position: absolute;
+  margin: auto;
+  top: -14%;
+  right: 8%;
+  /* width: 20px;
+  height: 20px; */
+  /* margin-top: 100px; */
+  cursor: pointer;
+}
+
+.leftright {
+  height: 2px;
+  width: 15px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: black;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+}
+
+.rightleft {
+  height: 2px;
+  width: 15px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: black;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+}
+
+label {
+  color: #1028;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.2em;
+  text-transform: uppercase;
+  /* letter-spacing: 0.5px; */
+  transition: all 0.3s ease-in;
+  opacity: 0;
+}
+.close {
+  margin: 30px 0 0 -7px;
+  position: absolute;
+}
+
+.close-container:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: pink;
+}
+.close-container:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: pink;
+}
+.close-container:hover label {
+  opacity: 1;
 }

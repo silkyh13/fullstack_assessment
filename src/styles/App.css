@@ -11,7 +11,7 @@ body {
   line-height: 1.7em;
 }
 a {
-  color: #00a07b;
+  color: #6feaca;
   text-decoration: none;
 }
 
@@ -39,9 +39,8 @@ p {
 .navbar .logo {
   float: left;
   padding-top: 20px;
-  color: #00a07b;
+  color: #6feaca;
   text-transform: uppercase;
-  text-shadow: 1px 1px #fbfbfb;
   letter-spacing: 3px;
 }
 
@@ -74,5 +73,5 @@ p {
 .navbar ul li a:hover,
 .navbar ul li a.current {
   background: #333;
-  color: #2bd9ad;
+  color: #6feaca;
 }
