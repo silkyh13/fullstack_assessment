@@ -66,7 +66,12 @@ footer a {
   color: blue;
 }
 
+.none {
+  display: none;
+}
 .box3 {
+  left: 58%;
+  top: 17vh;
   width: 300px;
   margin: 50px auto;
   border-radius: 15px;
@@ -77,7 +82,7 @@ footer a {
   font-weight: 900;
   font-family: arial;
   font-size: small;
-  position: relative;
+  position: absolute;
 }
 
 /* speech bubble 14 */
@@ -129,7 +134,7 @@ footer a {
   transition: all 0.3s ease-in;
 }
 
-label {
+.close-container label {
   color: #1028;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 0.2em;

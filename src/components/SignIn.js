@@ -9,8 +9,16 @@ export default class SignIn extends Component {
       email: "",
       password: "",
       error: false,
-      loggedInUser: ""
+      loggedInUser: "",
+      close: true
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e) {
+    e.preventDefault();
+    this.setState({
+      close: !this.state.close
+    });
   }
   handleSignIn = event => {
     this.setState({
@@ -58,7 +66,6 @@ export default class SignIn extends Component {
                   type="email"
                   id="email"
                   onChange={this.handleSignIn}
-                  placeholder="demo@gmail.com"
                 ></input>
               </div>
 
@@ -67,7 +74,6 @@ export default class SignIn extends Component {
                 <input
                   type="password"
                   id="password"
-                  placeholder="demo"
                   onChange={this.handleSignIn}
                 ></input>
               </div>
@@ -83,14 +89,16 @@ export default class SignIn extends Component {
               Don't have an account? <Link to="/signup">Sign Up</Link>
             </p>
           </footer>
-        </div>
-        <div className="box3 sb14">
-          <div class="close-container">
-            <div class="leftright"></div>
-            <div class="rightleft"></div>
-            <label class="close">close</label>
+          <div>
+            <div className={this.state.close ? "box3 sb14" : "none"}>
+              <div className="close-container" onClick={this.handleClick}>
+                <div className="leftright"></div>
+                <div className="rightleft"></div>
+                <label className="close">close</label>
+              </div>
+              Email: demo@gmail.com <br /> Password: demo
+            </div>
           </div>
-          Email: demo@gmail.com <br /> Password: demo
         </div>
       </div>
     );
