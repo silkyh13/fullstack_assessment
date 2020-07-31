@@ -25,7 +25,7 @@ const buy = (ticker, quantity, user, cb) => {
             ticker: stockKeyInfo.symbol,
             cost: stockKeyInfo.latestPrice * 1000,
             quantity,
-            open: stockKeyInfo.open,
+            open: stockKeyInfo.open || 0,
             userId: user.id
           })
             .then(transaction => {

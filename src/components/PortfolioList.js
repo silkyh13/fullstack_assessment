@@ -18,6 +18,7 @@ export default class PortfolioList extends Component {
             <div className="txn-data">Total Price</div>
           </div>
           {this.props.list.map((stock, index) => {
+            console.log(stock.latestPrice, stock.open);
             return (
               <div className="txn-row" key={index}>
                 <div className="txn-data">{stock.symbol}</div>
