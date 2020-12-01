@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 export default class Goodbye extends Component {
-  render() {
+  render(){
     return (
       <div id="sign-in">
         <div className="form-container">
